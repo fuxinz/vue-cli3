@@ -5,9 +5,9 @@ const resolve = dir => {
 };
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/my-project/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/test/" : "/",
   chainWebpack: config => {
-    config.resolve.alias
-      .set("@", resolve("src"))
-  }
+    config.resolve.alias.set("@", resolve("src"));
+  },
+  productionSourceMap: false
 };
