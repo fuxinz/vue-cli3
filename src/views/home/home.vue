@@ -9,6 +9,7 @@
         @click="add"
       >vuex-test</a>.
     </p>
+    <router-link to="/mine">Go to mine</router-link>
   </div>
 </template>
 
