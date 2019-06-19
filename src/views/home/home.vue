@@ -3,35 +3,34 @@
     <p>
       {{num}}
       <br>check out the
-      <a
-        target="_blank"
-        rel="noopener"
-        @click="add"
-      >vuex-test</a>.
+      <a target="_blank" rel="noopener" @click="add">vuex-test</a>.
     </p>
     <router-link to="/mine">Go to mine</router-link>
+    <scroll-bar context="关键的时间点看世界的角sdsdfsdffffffffffffffffff度会计师斤斤计"></scroll-bar>
   </div>
 </template>
 
 <script>
-import Home from "@/api/home"
+import Home from "@/api/home";
+import ScrollBar from "@/components/scrollBar";
 export default {
-  name: 'HelloWorld',
-  data(){
+  name: "HelloWorld",
+  components: { ScrollBar },
+  data() {
     return {
-      num:null
-    }
+      num: null
+    };
   },
-  mounted(){
-    this.num = this.$store.state.test
-    Home.getUser()
+  mounted() {
+    this.num = this.$store.state.test;
+    Home.getUser();
   },
-  methods:{
-    add(){
-        this.$store.dispatch('A')
+  methods: {
+    add() {
+      this.$store.dispatch("A");
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
