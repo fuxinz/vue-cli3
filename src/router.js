@@ -11,7 +11,7 @@ const routes = [
       title: "首页"
     },
     component: () =>
-      import(/* webpackChunkName: "home" */ "@/views/home/home.vue")
+      import(/* webpackPrefetch: true  */ "@/views/home/home.vue")
   },
   {
     path: "/mine",
@@ -20,7 +20,7 @@ const routes = [
       title: "我的"
     },
     component: () =>
-      import(/* webpackChunkName: "home" */ "@/views/home/mine.vue")
+      import(/* webpackChunkName: "mine" */ "@/views/home/mine.vue")
   }
 ];
 

@@ -28,6 +28,13 @@ export default {
   methods: {
     add() {
       this.$store.dispatch("A");
+    },
+    //图片上传
+    uploadFile() {
+      const file = document.getElementById("file").files[0];
+      const formdata = new FormData();
+      formdata.append("file", file);
+      Home.uploadFile(formdata);
     }
   }
 };
@@ -35,8 +42,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello{
+  width: 500px;
+  height: 500px;
+  background-color: aqua
+}
 h3 {
   margin: 40px 0 0;
+}
+p{
+  font-size: 14px;
 }
 ul {
   list-style-type: none;

@@ -43,7 +43,7 @@ export default {
         };
       }
     },
-    animation(timer){
+    animate(timer){
       setTimeout(()=>{
         
       },timer)
