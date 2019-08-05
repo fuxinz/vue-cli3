@@ -6,7 +6,7 @@ const resolve = dir => {
 const PROXY_URL = "https://www.easy-mock.com/mock/5cdd133a15d65607859de8db/";
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/test/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/static" : "/",
   chainWebpack: config => {
     config.resolve.alias.set("@", resolve("src"));
   },
@@ -35,6 +35,7 @@ module.exports = {
   },
   productionSourceMap: false,
   devServer: {
+    https: true,
     proxy: {
       "/api": {
         target: PROXY_URL,
