@@ -37,7 +37,11 @@ Object.keys(filters).forEach(key => {
 // Vue.use(MintUI);
 
 new Vue({
+  el: "#app",
   router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+  render: h => h(App),
+  mounted() {
+    // You'll need this for renderAfterDocumentEvent.
+    document.dispatchEvent(new Event("render-event"));
+  }
+});
