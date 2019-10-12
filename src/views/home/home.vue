@@ -2,20 +2,17 @@
   <div class="hello">
     <p>
       {{num}}
-      <br>check out the
+      <br />check out the
       <a target="_blank" rel="noopener" @click="add">vuex-test</a>.
     </p>
     <router-link to="/mine">Go to mine</router-link>
-    <scroll-bar context="关键的时间点看世界的角sdsdfsdffffffffffffffffff度会计师斤斤计"></scroll-bar>
   </div>
 </template>
 
 <script>
 import Home from "@/api/home";
-import ScrollBar from "@/components/scrollBar";
 export default {
   name: "HelloWorld",
-  components: { ScrollBar },
   data() {
     return {
       num: null
@@ -42,15 +39,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hello{
+.hello {
   width: 500px;
   height: 500px;
-  background-color: aqua
+  background-color: aqua;
 }
 h3 {
   margin: 40px 0 0;
 }
-p{
+p {
   font-size: 14px;
 }
 ul {

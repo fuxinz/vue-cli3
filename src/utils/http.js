@@ -1,23 +1,48 @@
 import axios from "axios";
 import { Indicator, Toast } from "mint-ui";
-import config from "../config";
+import { isLocalDev } from "../config";
 // import router from "../router";
 
 //设置axios默认值
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "production" ? config.pro : config.dev;
+  isLocalDev === false ? process.env.VUE_APP_BASE_URL : "/api";
 // axios.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
+// 接口白名单
+const whiteList = [];
+const isInWhiteList = function(url) {
+  var flag = false;
+  whiteList.forEach(function(e) {
+    if (url.indexOf(e) >= 0) {
+      flag = true;
+    }
+  });
+  return flag;
+};
+// loading 白名单
+const loadingUrl = [];
+const isloading = function(url) {
+  var flag = false;
+  loadingUrl.forEach(function(e) {
+    if (url.indexOf(e) >= 0) {
+      flag = true;
+    }
+  });
+  return flag;
+};
 // 添加请求拦截器
 axios.interceptors.request.use(
   function(config) {
     //请求头增加token
-    // const token = localStorage.getItem("token");
-    // if (token) {
-    //   config.headers["Authorization"] = token;
-    // }
-    Indicator.open({ spinnerType: "fading-circle" });
+    if (!isInWhiteList(config.url)) {
+      // const token = localStorage.getItem("token");
+      // if (token) {
+      //   config.headers["Authorization"] = token;
+      // }
+    }
+    if (!isloading(config.url)) {
+      Indicator.open({ spinnerType: "fading-circle" });
+    }
     return config;
   },
   function(error) {
@@ -71,7 +96,10 @@ axios.interceptors.response.use(
         break;
       // 404请求不存在
       case 404:
-        Toast("网络请求不存在");
+        Toast("404 not fund");
+        break;
+      case 500:
+        Toast("500 Internal Server Error");
         break;
       // 其他错误，直接抛出错误提示
       default:

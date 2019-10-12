@@ -1,6 +1,2 @@
-const baseUrl = {
-  dev: "https://www.easy-mock.com/mock/5cdd133a15d65607859de8db/",
-  pro: "/"
-};
+export const isLocalDev = true // 控制本地联调
 
-export default baseUrl;
