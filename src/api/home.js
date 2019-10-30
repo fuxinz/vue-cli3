@@ -1,8 +1,10 @@
 import axios from "axios";
+import qs from "qs";
+
 const Home = {};
 
-Home.getUser = () => {
-  return axios.get("query");
+Home.getUser = params => {
+  return axios.post("query", qs.stringify(params));
 };
 //图片上传
 Home.uploadFile = formData => {

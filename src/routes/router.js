@@ -21,5 +21,8 @@ const router = new Router({
   // history hash
   mode: "hash"
 });
-
+router.beforeResolve((to, from, next) => {
+  document.title = to.meta.title || "";
+  next();
+});
 export default router;
