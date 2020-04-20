@@ -12,7 +12,7 @@ const routes = [
       title: "首页"
     },
     component: () =>
-      import(/* webpackPrefetch: true  */ "@/views/home/home.vue")
+      import(/* webpackChunkName: "home" */ "@/views/home/home.vue")
   }
 ];
 
